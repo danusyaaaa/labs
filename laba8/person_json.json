@@ -1,0 +1,30 @@
+{
+  "id": 3,
+  "surname": "Vika",
+  "name": "Lizunova",
+  "lastName": "Olegovna",
+  "dateOfBirth": "1999-12-02",
+  "passwordSeries": "MP1234567",
+  "cityes": [
+    {
+      "id": 1,
+      "name": "Gomel"
+    }
+  ],
+  "addressFact": "Minsk",
+  "phoneNumber": "4325678",
+  "email": "email@gmail.com",
+  "positions": [
+    {
+      "id": 1,
+      "name": "Minsk"
+    },
+    {
+      "id": 2,
+      "name": "Gomel"
+    }
+  ],
+  "addressRegistration": "Minsk",
+  "citizenShip": 1,
+  "employed": true
+}

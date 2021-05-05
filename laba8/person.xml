@@ -1,0 +1,28 @@
+
+<User>
+    <addressFact>Minsk</addressFact>
+    <addressRegistration>Minsk</addressRegistration>
+    <citizenShip>1</citizenShip>
+    <cityes>
+        <id>1</id>
+       <name>Gomel</name>
+    </cityes>
+    <dateOfBirth>1999-12-02</dateOfBirth>
+    <email>email@gmail.com</email>
+    <id>2</id>
+    <isEmployed>true</isEmployed>
+    <lastName>Dmitrievich</lastName>
+    <name>Savely</name>
+    <passwordSeries>MP1234567</passwordSeries>
+    <phoneNumber>4325678</phoneNumber>
+    <positions>
+        <id>1</id>
+        <name>Minsk</name>
+    </positions>
+    <positions>
+        <id>2</id>
+        <name>Gomel</name>
+    </positions>
+    <surname>Latun</surname>
+</User>
+

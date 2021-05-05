@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<User>
+    <id>2</id>
+    <surname>Latun</surname>
+    <name>Savely</name>
+    <lastName>Dmitrievich</lastName>
+    <dateOfBirth>1999-12-02T00:00:00+03:00</dateOfBirth>
+    <passwordSeries>MP1234567</passwordSeries>
+    <cityes>
+        <id>1</id>
+        <name>Gomel</name>
+    </cityes>
+    <addressFact>Minsk</addressFact>
+    <phoneNumber>4325678</phoneNumber>
+    <email>email@gmail.com</email>
+    <isEmployed>true</isEmployed>
+    <positions>
+        <id>1</id>
+        <name>Minsk</name>
+    </positions>
+    <positions>
+        <id>2</id>
+        <name>Gomel</name>
+    </positions>
+    <addressRegistration>Minsk</addressRegistration>
+    <citizenShip>1</citizenShip>
+</User>
