@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:outputLabel value="Department"/>
+<h:form rendered="#{not empty departmentController.list}">
+    <h:dataTable value="#{departmentController.list}" var="item">
+        <h:column><f:facet name="header">ID</f:facet>#{item.id}</h:column>
+        <h:column><f:facet name="header">Никнейм</f:facet>#{item.name}</h:column>
+        <h:column>
+            <h:commandButton value="Удалить" action="#{departmentController.delete(item)}" />
+        </h:column>
+        <h:column>
+            <h:commandButton value="Редактировать" action="#{departmentController.onButtonEditClick(item)}" />
+        </h:column>
+    </h:dataTable>
+</h:form>
+
+<h:panelGroup rendered="#{empty departmentController.list}">
+    <p>Список пуст</p>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{!departmentController.edit}">
+    <h3>Добавить отдел</h3>
+    <h:form>
+        <h:message for="name" style="color:red" />
+        <p>Name: <h:inputText id="name" value="#{departmentController.item.name}">
+            <f:validateLength minimum="2" maximum="20" />
+        </h:inputText></p>
+        <p>
+            <h:commandButton value="add" action="#{departmentController.add}" />
+        </p>
+    </h:form>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{departmentController.idDepartment != -1}">
+    <h3>Редактировать  #{departmentController.idDepartment}</h3>
+    <h:form>
+        <p>Name: <h:inputText value="#{departmentController.item.name}" /></p>
+        <p>
+            <h:commandButton value="сохранить" action="#{departmentController.saveEditedDepartment}" />
+
+        </p>
+    </h:form>
+</h:panelGroup>
+
+<h:outputLabel value="Поиск id :"/>
+<h:form>
+    <p>ID: <h:inputText id="nameSearch" value="#{departmentController.nameSearchDepa}">
+    </h:inputText></p>
+    <p>
+        <h:commandButton value="Поиск"  />
+    </p>
+</h:form>
+
+<h:outputLabel value="Результат поиска :"/>
+<h:form rendered="#{not empty departmentController.nameSearchDepa}">
+    <h:column><f:facet name="header">ID</f:facet>#{departmentController.getResultSearch()}</h:column>
+</h:form>
+<f:view>
+    <p>
+        <a href="empl.xhtml">назад</a>
+    </p>
+</f:view>
+
+</html>

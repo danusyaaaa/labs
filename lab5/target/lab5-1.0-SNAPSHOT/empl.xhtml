@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+
+<h:outputLabel value="Список работников"/>
+<h:form rendered="#{not empty employeeController.list}">
+    <h:dataTable value="#{employeeController.list}" var="empl">
+        <h:column><f:facet name="header">ID</f:facet>#{empl.id}</h:column>
+        <h:column><f:facet name="header">Название</f:facet>#{empl.name}</h:column>
+        <h:column><f:facet name="header">Цена</f:facet>#{empl.salary}</h:column>
+        <h:column><f:facet name="header">Должность</f:facet>#{empl.deg}</h:column>
+        <h:column><f:facet name="header">Название отдела</f:facet>#{empl.department.name}</h:column>
+        <h:column>
+            <h:commandButton value="Удалить" action="#{employeeController.delete(empl)}" />
+        </h:column>
+        <h:column>
+            <h:commandButton value="Редактировать" action="#{employeeController.onButtonEditClick(empl)}" />
+        </h:column>
+
+   </h:dataTable>
+</h:form>
+
+<h:panelGroup rendered="#{empty employeeController.list}">
+    <p>Список пуст</p>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{!employeeController.edit}">
+    <h3>Добавить сотрудника</h3>
+    <h:form>
+        <h:message for="name" style="color:red" />
+        <p>Name: <h:inputText id="name" value="#{employeeController.item.name}">
+            <f:validateLength minimum="2" maximum="20" />
+        </h:inputText></p>
+        <p>Salary: <h:inputText id="salary" value="#{employeeController.item.salary}">
+            <f:validateLength minimum="1" maximum="7" />
+        </h:inputText></p>
+        <p>Deg: <h:inputText id="deg" value="#{employeeController.item.deg}">
+            <f:validateLength minimum="5" maximum="20" />
+        </h:inputText></p>
+        <h:selectOneListbox id="list" size="10"
+                            value="#{employeeController.item.department}"
+                            valueChangeListener="#{employeeController.valueChanged}">
+            <f:selectItems value="#{departmentController.list}"
+                           onchange="submit()"/>
+        </h:selectOneListbox>
+        <h:commandButton value="add" action="#{employeeController.add}" />
+    </h:form>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{employeeController.idEmpl != -1}">
+    <h3>Редактировать  #{employeeController.idEmpl}</h3>
+    <h:form>
+        <p>Name: <h:inputText value="#{employeeController.item.name}" /></p>
+        <p>Salary: <h:inputText id="salaryUpdate" value="#{employeeController.item.salary}">
+            <f:validateLength minimum="1" maximum="7" />
+        </h:inputText></p>
+        <p>Deg: <h:inputText id="degUpdate" value="#{employeeController.item.deg}">
+            <f:validateLength minimum="5" maximum="20" />
+        </h:inputText></p>
+
+        <p>
+            <h:commandButton value="сохранить" action="#{employeeController.saveEditedEmpl}" />
+
+        </p>
+    </h:form>
+</h:panelGroup>
+
+<h:outputLabel value="Поиск id :"/>
+<h:form>
+    <p>ID: <h:inputText id="nameSearch" value="#{employeeController.nameSearchEmpl}">
+    </h:inputText></p>
+    <p>
+        <h:commandButton value="Поиск"  />
+    </p>
+</h:form>
+
+<h:outputLabel value="Результат поиска :"/>
+<h:form rendered="#{not empty employeeController.nameSearchEmpl}">
+    <h:column><f:facet name="header">ID</f:facet>#{employeeController.getResultSearch()}</h:column>
+</h:form>
+<f:view>
+    <p>
+        <a href="empl.xhtml">назад</a>
+    </p>
+</f:view>
+
+</html>
